@@ -68,10 +68,9 @@ Place paths to the input
 
 1. Setup a python virtual environment (pyenv, conda, mamba etc.)
 2. Install dependencies from requirements.txt
-3. Prepare the data directory and a config `.json` file (see examples) TODO: elaborate
+3. Prepare the data directory and a config `.json` file (see examples)
 4. Preprocess input data using `preprocessing.py`
-5. Train a network using `train.py` TODO: elaborate
-6. TODO: a way to use a ready network for prediction
+5. Train a network using `train.py`
   
 ### Using Docker
 
@@ -91,7 +90,7 @@ We use an encoder-decoder architecture with three HyperGraphConv layers in the e
 
 We use the Adam optimizer with a learning rate scheduler that reduces the learning rate by a factor of 0.1 if the validation loss does not decrease for five consecutive epochs. The loss function used is BCEWithLogitsLoss. In contrast to Paul et al. (2024), we add a sigmoid layer at the end of the network during validation and testing, so that the evaluation metrics are computed on values representing the probability of an edge existing.
 
-Similar to Paul et al. (2024), augmentation slightly improves performance.
+Similar to Paul et al. (2024), augmentation improves performance. Importantly, the addition of 3D chromatin structure network features further increased both AUROC and AUPRC.
 
 Resulting scores on test set:
 | Model   |  AUC  |   AUPR |  F1 score |   Jaccard score  |   Top-k score |
